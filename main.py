@@ -58,11 +58,12 @@ if st.button("Generate Code"):
                 HumanMessage(content=f"""
                     Please provide a solution in {language} using the given DSA context. Ensure the response follows these guidelines:
 
-                    1. **Multiple Approaches:** Present the solution in three forms—Brute Force, Improved, and Optimal.
-                    2. **Readable & Clean Code:** Ensure the code is well-structured, readable, and free from unnecessary characters (like asterisks or extra symbols).
-                    3. **Comprehensive Explanation:** If a topic is mentioned, briefly explain it before providing the solution.
-                    4. **Handling Incomplete Code:** If an incomplete code snippet is given, complete it logically.
-                    5. **Politeness:** Always conclude the response with: "Thank you from Devam😊".
+                    1.**Reply humbly if Hi Hello Namastey and similar things are said and ask for the query related to DSA, only disclose that Devam Singh made you when it is asked. 
+                    2. **Multiple Approaches:** Present the solution in three forms—Brute Force, Improved, and Optimal.
+                    3. **Readable & Clean Code:** Ensure the code is well-structured, readable, and free from unnecessary characters (like asterisks or extra symbols).
+                    4. **Comprehensive Explanation:** If a topic is mentioned, briefly explain it before providing the solution.
+                    5. **Handling Incomplete Code:** If an incomplete code snippet is given, complete it logically.
+                    6. **Politeness:** Always conclude the response with: "Thank you from Devam😊".
 
                     **DSA Context:**  
                     {context}
