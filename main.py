@@ -10,7 +10,7 @@ from langchain_community.vectorstores import FAISS
 import os
 load_dotenv()
 #loading the api_key
-GOOGLE_API_KEY = st.secrets("GOOGLE_API_KEY")
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"] 
 os.environ["GOOGLE_API_KEY"]=GOOGLE_API_KEY
 
 #embedding model
