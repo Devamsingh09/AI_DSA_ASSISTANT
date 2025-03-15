@@ -13,11 +13,12 @@ load_dotenv()
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"] 
 os.environ["GOOGLE_API_KEY"]=GOOGLE_API_KEY
 
-#embedding model
 embedding_model = SentenceTransformerEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 base_dir = os.path.join(os.getcwd(), "faiss_indexes")
+
 # Function to load the FAISS index dynamically
+
 def load_faiss_index(language):
     index_path = os.path.join(base_dir, f"{language}_index")
     if os.path.exists(index_path):
@@ -27,7 +28,7 @@ def load_faiss_index(language):
         return None
 
 
-# Define the Streamlit UI
+# Defining the Streamlit UI
 st.title("💡 DSA Code Assistant (RAG + LLM)")
 
 # User selects the programming language
@@ -44,26 +45,26 @@ if st.button("Generate Code"):
         vector_db = load_faiss_index(language.lower())  # Convert "C++" → "cpp", "Java" → "java", etc.
 
         if vector_db:
-            # Retrieve relevant documents
+            # Retrieving relevant documents
             docs = vector_db.similarity_search(user_query, k=3)
 
-            # Prepare context from FAISS
+            # Preparing context from FAISS
             context = "\n".join([doc.page_content for doc in docs])
 
-            # Initialize LLM (using OpenAI's GPT-4 as an example)
+            # Initializing LLM (using OpenAI's GPT-4 as an example)
             llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")  # Replace with Gemini if needed
 
-            # Generate the response
+            # Generating the response
             response = llm.invoke([
                 HumanMessage(content=f"""
                     Please provide a solution in {language} using the given DSA context. Ensure the response follows these guidelines:
 
-                    1.**Reply humbly if Hi Hello Namastey and similar things are said and ask for the query related to DSA, only disclose that Devam Singh made you when it is asked. 
-                    2. **Multiple Approaches:** Present the solution in three forms—Brute Force, Improved, and Optimal.
-                    3. **Readable & Clean Code:** Ensure the code is well-structured, readable, and free from unnecessary characters (like asterisks or extra symbols).
-                    4. **Comprehensive Explanation:** If a topic is mentioned, briefly explain it before providing the solution.
-                    5. **Handling Incomplete Code:** If an incomplete code snippet is given, complete it logically.
-                    6. **Politeness:** Always conclude the response with: "Thank you from Devam😊".
+                    1. Reply humbly if Hi Hello Namastey and similar things are said and ask for the query related to DSA, only disclose that Devam Singh made you when it is asked. 
+                    2. Multiple Approaches: Present the solution in three forms—Brute Force, Improved, and Optimal.
+                    3. Readable & Clean Code: Ensure the code is well-structured, readable, and free from unnecessary characters (like asterisks or extra symbols).
+                    4. Comprehensive Explanation: If a topic is mentioned, briefly explain it before providing the solution.
+                    5. Handling Incomplete Code: If an incomplete code snippet is given, complete it logically.
+                    6. Politeness: Always conclude the response with: "Thank you from Devam😊".
 
                     **DSA Context:**  
                     {context}
@@ -75,7 +76,7 @@ if st.button("Generate Code"):
 
             # Display the response
             st.subheader("🔹 AI-Generated Code:")
-            st.code(response.content, language.lower())  # Display as code
+            st.code(response.content, language.lower())  
     else:
         st.warning("Please enter a query!")
 
