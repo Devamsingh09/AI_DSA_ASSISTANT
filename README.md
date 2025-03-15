@@ -18,6 +18,6 @@ Designed for daily coding tasks, this system is particularly useful for DSA-rela
 
 This intelligent retrieval system significantly enhances learning, debugging, and competitive coding by making problem-solving faster, structured, and language-specific. 
 
-## Credis
+## Credits
 -Devam Singh
 -IIIT Ranchi (B.Tech CSE)
