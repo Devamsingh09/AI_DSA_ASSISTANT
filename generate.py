@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
-# Define paths
+# Defining the paths
 pdf_files = {
     "cpp": "data/pdfs/dsa_cpp.pdf",
     "java": "data/pdfs/dsa_java.pdf",
@@ -13,10 +13,10 @@ pdf_files = {
 
 save_dir = "faiss_indexes"  # Directory to save indexes
 
-# Ensure the save directory exists
+# Ensuring the save directory exists
 os.makedirs(save_dir, exist_ok=True)
 
-# Load the embedding model once
+# Loading the embedding model once
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 # Function to process and save FAISS index
@@ -35,7 +35,7 @@ def process_and_save_faiss(language, pdf_path):
     vector_db.save_local(index_path)
     print(f"{language.capitalize()} index saved successfully at {index_path}")
 
-# Process and save indexes for each language
+
 for lang, path in pdf_files.items():
     process_and_save_faiss(lang, path)
 
