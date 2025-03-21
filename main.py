@@ -52,7 +52,7 @@ if st.button("Generate Code"):
             context = "\n".join([doc.page_content for doc in docs])
 
             # Initializing LLM (using OpenAI's GPT-4 as an example)
-            llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")  # Replace with Gemini if needed
+            llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")  
 
             # Generating the response
             response = llm.invoke([
@@ -74,7 +74,7 @@ if st.button("Generate Code"):
                 """)
             ])
 
-            # Display the response
+            
             st.subheader("🔹 AI-Generated Code:")
             st.code(response.content, language.lower())  
     else:
